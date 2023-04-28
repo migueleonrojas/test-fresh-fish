@@ -1,0 +1,15 @@
+<mat-nav-list>
+   <a mat-list-item  [routerLink]="['/characters']"  [routerLinkActive]="['active']" (click)="onSidenavClose('characters')">
+      <span class="nav-caption">Personajes</span>
+   </a>
+   <a mat-list-item [routerLink]="['/students']"  [routerLinkActive]="['active']" (click)="onSidenavClose('students')">
+      <span class="nav-caption">Estudiantes</span>
+   </a>
+   <a mat-list-item [routerLink]="['/new-student']" [routerLinkActive]="['active']" (click)="onSidenavClose('new-student')">
+      <span class="nav-caption">Nuevos Estudiantes</span>
+   </a>
+   <a mat-list-item  [routerLink]="['/teachers']"  [routerLinkActive]="['active']" (click)="onSidenavClose('teachers')">
+      <span class="nav-caption">Profesores</span>
+   </a>
+  
+</mat-nav-list>

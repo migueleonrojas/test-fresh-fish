@@ -1,0 +1,25 @@
+.content{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   
+}
+
+img {
+   width: 2rem;
+   padding-left: 0.8rem;
+}
+
+table {
+   width: 100%;
+}
+
+mat-form-field{
+   padding-top: 5px;
+   padding-left: 15px;
+}
+
+mat-card{
+   text-align: center;
+}

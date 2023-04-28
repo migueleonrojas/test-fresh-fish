@@ -1,0 +1,82 @@
+<div class="content">
+   <button  color="primary" [routerLink]="['/students']" mat-raised-button mat-button>Regresar al listado de estudiantes</button>
+   <mat-card-content>
+      <form class="form" (submit)="submit($event)" [formGroup]="formLogin">
+
+         <div class="mx-auto width-90">
+            <mat-form-field class="full-width">
+               <mat-label>Nombre</mat-label>
+               <input matInput 
+                  placeholder="Nombre" 
+                  name="name" id="name" 
+                  autocomplete="off"
+                  formControlName="name" 
+               />
+               <mat-error *ngIf = "formLogin.get( 'name' )!.touched && formLogin.get( 'name' )!.hasError('required')">
+                  No dejar en blanco
+                </mat-error>
+                <mat-error *ngIf = "formLogin.get( 'name' )!.touched && formLogin.get( 'name' )!.hasError('minlength')">
+                  Por lo menos 3 letras
+                </mat-error>
+                <mat-error *ngIf = "formLogin.get( 'name' )!.touched && formLogin.get( 'name' )!.hasError('maxlength')">
+                  Por lo máximo 30 letras
+                </mat-error>
+                
+            </mat-form-field>
+         </div>
+
+         <div class="mx-auto width-90">
+            <mat-form-field class="full-width">
+               <mat-label>Patronus</mat-label>
+
+               <input matInput 
+                  placeholder="Patronus" 
+                  name="patronus" id="patronus" 
+                  autocomplete="off"
+                  formControlName="patronus" 
+               />
+               <mat-error *ngIf = "formLogin.get( 'patronus' )!.touched && formLogin.get( 'patronus' )!.hasError('required')">
+                  No dejar en blanco
+                </mat-error>
+                <mat-error *ngIf = "formLogin.get( 'patronus' )!.touched && formLogin.get( 'patronus' )!.hasError('minlength')">
+                  Por lo menos 3 letras
+                </mat-error>
+                <mat-error *ngIf = "formLogin.get( 'patronus' )!.touched && formLogin.get( 'patronus' )!.hasError('maxlength')">
+                  Por lo máximo 20 letras
+                </mat-error>
+               
+            </mat-form-field>
+         </div>
+         <div class="mx-auto width-90">
+            <mat-form-field class="full-width">
+               <mat-label>Edad</mat-label>
+               <input matInput 
+                  placeholder="Edad" 
+                  name="age" id="age" 
+                  autocomplete="off"
+                  formControlName="age" 
+               />
+               <mat-error *ngIf = "formLogin.get( 'age' )!.touched && formLogin.get( 'age' )!.hasError('required')">
+                  No dejar en blanco
+                </mat-error>
+                <mat-error *ngIf = "formLogin.get( 'age' )!.touched && formLogin.get( 'age' )!.hasError('minlength')">
+                  Por lo menos 1 número
+                </mat-error>
+                <mat-error *ngIf = "formLogin.get( 'age' )!.touched && formLogin.get( 'age' )!.hasError('maxlength')">
+                  Por lo máximo 3 números
+                </mat-error>
+                <mat-error *ngIf = "formLogin.get( 'age' )!.touched && formLogin.get( 'age' )!.hasError('pattern')">
+                  Solo ingrese números
+                </mat-error>
+            </mat-form-field>
+         </div>
+         <div class="mx-auto pt-50 width-90">
+            <button [disabled]="formLogin.invalid" type="submit" mat-raised-button color="primary"
+              class="full-width rounded btn-submit">
+              Solicitud de nuevo estudiante
+            </button>
+          </div>
+         
+      </form>
+   </mat-card-content>
+</div>

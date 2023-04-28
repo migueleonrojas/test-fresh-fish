@@ -1,0 +1,16 @@
+a {
+   text-decoration: none;
+   color: white;
+}
+
+
+
+.nav-caption {
+   display: inline-block;
+   padding: 6px;
+
+}
+
+.mat-list-item.active{
+   color: purple;
+ }
