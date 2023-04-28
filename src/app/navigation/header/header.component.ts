@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  //emite de que va ha cerrar o abrir el menu lateral
   public onToggleSidenav(){
 
       this.sidenavToggle.emit();

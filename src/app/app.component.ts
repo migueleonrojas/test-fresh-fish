@@ -21,6 +21,8 @@ export class AppComponent {
    router.navigate(['/characters']);
   }
 
+  //funcion toma el valor que pasa el componente header para modificar el link que esta activo en 
+  // el componente = nav mat-tab-nav-bar -> a mat-tab-link
   changeActiveUrl(event:Event){
 
      let index = this.links.indexOf(event.toString());

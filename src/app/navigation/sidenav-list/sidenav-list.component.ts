@@ -19,7 +19,9 @@ export class SidenavListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  //emite de que va ha cerrar o abrir el menu lateral 
+  //Y emite la url que se presiono para modificar el componente que esta en app-component =>
+  //"a mat-tab-link" el cual marca la seccion en donde actualmente estamos
   public onSidenavClose(urlRelative:string) {
 
       

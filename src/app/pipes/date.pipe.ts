@@ -4,6 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'dateRest'
 })
 
+//hace la resta del año de la fecha actual menos el año de nacimiento del registro para adecuar la
+//data en la tabla
 export class DatePipe implements PipeTransform {
     transform(value: string): string {
 

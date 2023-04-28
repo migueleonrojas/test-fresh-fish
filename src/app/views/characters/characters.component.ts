@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
 import { ThemePalette } from '@angular/material/core';
-import { Student } from 'src/app/interfaces/student';
+
 
 
  
@@ -40,11 +40,13 @@ export class CharactersComponent implements OnInit {
    
   }
   ngOnInit(){}
-
-  async getHouse(house:string) {
+  //obtiene los personajes
+  async getCharacters(house:string) {
    
    this.characters =  await this.charactersService.getCharacters(house).toPromise();
    this.dataSource = new MatTableDataSource<Character>(this.characters);
+   //es un filtrado personalizado mas que todo para el valor del "yearOfBirth" ya que usa un pipe 
+   //para modificar su valor y obtener la edad, por eso se debe adecuar aqui para que pueda filtrarse
    this.dataSource.filterPredicate = (data:any, filter:any) => {
 
       if(data.yearOfBirth !== null){
@@ -63,6 +65,7 @@ export class CharactersComponent implements OnInit {
       } 
 
    }
+   //se configuara la data para que pueda ordenarse y paginarse
    this.configDataSource();
   }
 
@@ -71,6 +74,7 @@ export class CharactersComponent implements OnInit {
    this.dataSource.sortingDataAccessor = (adata:any, attribute:any) => adata[attribute];
    this.dataSource.paginator = this.paginator;
   }
+  // para filtrar la data
   applyFilter(event: Event) {
    if(this.dataSource === undefined) return;
 

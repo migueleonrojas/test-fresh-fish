@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Student } from 'src/app/interfaces/student';
-import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-new-student-application',
@@ -14,12 +13,11 @@ export class NewStudentApplicationComponent implements OnInit {
    student : Student;
 
    constructor(
-      private router:Router,
       private snackBar: MatSnackBar
    ) { 
       this.formBuild();
    }
-
+   //creando un formulario reactivo
   formBuild() {
    this.formLogin = new FormGroup({
       name: new FormControl('', [
@@ -48,8 +46,9 @@ export class NewStudentApplicationComponent implements OnInit {
 
   async submit(e:Event)  {
 
-   e.preventDefault();
+   e.preventDefault();//evitar que haga el evento por defecto que es enviar data y actualizar
    let lc = localStorage;
+   //valida si hay estudiantes nuevos guardados para agregarlo si es que hay
    if(localStorage.getItem('students') !== null){
       this.students = JSON.parse(lc.getItem('students') || "[]");
    }
@@ -61,11 +60,11 @@ export class NewStudentApplicationComponent implements OnInit {
    }
   
    this.students.push(this.student)
-   
+   //guarda el estudiante actual mas los anteriores agregados
    lc.setItem('students', JSON.stringify(this.students));
 
    this.snackBar.open('La solicitud del estudiante nuevo es exitosa','Cerrar');
-   this.formLogin.reset();
+   this.formLogin.reset();//limpia los valores de los inputs
 
 
    

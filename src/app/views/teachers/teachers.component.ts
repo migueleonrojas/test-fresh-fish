@@ -22,6 +22,7 @@ export class TeachersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+   //obtiene los profesores
    this.getTeacher();
   }
 
@@ -29,6 +30,8 @@ export class TeachersComponent implements OnInit {
    
    this.teachers =  await this.teachersService.getTeachers().toPromise();
    this.dataSource = new MatTableDataSource<Teacher>(this.teachers);
+   //es un filtrado personalizado mas que todo para el valor del "yearOfBirth" ya que usa un pipe 
+   //para modificar su valor y obtener la edad, por eso se debe adecuar aqui para que pueda filtrarse
    this.dataSource.filterPredicate = (data:any, filter:any) => {
 
       if(data.yearOfBirth !== null){
@@ -47,7 +50,7 @@ export class TeachersComponent implements OnInit {
       } 
 
    }
-   
+   //se configuara la data para que pueda ordenarse y paginarse
    this.configDataSource();
   }
 
@@ -56,6 +59,7 @@ export class TeachersComponent implements OnInit {
    this.dataSource.sortingDataAccessor = (adata:any, attribute:any) => adata[attribute];
    this.dataSource.paginator = this.paginator;
   }
+  // para filtrar la data
   applyFilter(event: Event) {
    this.dataSource.filter = (event.target as HTMLInputElement).value.trim().toLowerCase();
  }

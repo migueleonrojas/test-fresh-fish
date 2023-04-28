@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { Teacher } from 'src/app/interfaces/teacher';
-import { TeachersService } from 'src/app/services/teachers.service';
 import { Student } from 'src/app/interfaces/student';
 
 @Component({
@@ -21,11 +19,14 @@ export class NewsStudentsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   this.getTeacher();
+   //obtiene los nuevos estudiantes
+   this.getNewStudents();
   }
 
-  async getTeacher() {
+  
+  async getNewStudents() {
    let lc = localStorage;
+   //valida si hay estudiantes nuevos guardados para agregarlo si es que hay
    if(localStorage.getItem('students') !== null){
       this.students = JSON.parse(lc.getItem('students') || "[]");
    }
@@ -33,7 +34,7 @@ export class NewsStudentsComponent implements OnInit {
    
    this.dataSource = new MatTableDataSource<Student>(this.students);
    
-   
+   //se configuara la data para que pueda ordenarse y paginarse
    this.configDataSource();
   }
 
@@ -42,6 +43,7 @@ export class NewsStudentsComponent implements OnInit {
    this.dataSource.sortingDataAccessor = (adata:any, attribute:any) => adata[attribute];
    this.dataSource.paginator = this.paginator;
   }
+  // para filtrar la data
   applyFilter(event: Event) {
    this.dataSource.filter = (event.target as HTMLInputElement).value.trim().toLowerCase();
  }
